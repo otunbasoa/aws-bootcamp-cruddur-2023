@@ -16,3 +16,5 @@ The first live stream video was interesting because it exposed me to what i shou
 ## Budget
 
 we walked through the process of creating a budget and i created a monthly cost budget on my aws account to notify me through my email when my spend exceeds or is forcasted to exceed my budgeted amount which i set to $100. see screen shot below;
+
+<img width="1099" alt="Screenshot 2023-02-17 at 5 54 07 PM" src="https://user-images.githubusercontent.com/88699664/219715438-470e72ef-f1f4-4667-a2cc-aa83044ebacc.png">
