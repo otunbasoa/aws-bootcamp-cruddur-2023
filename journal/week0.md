@@ -1,6 +1,6 @@
 # Week 0 
 
-i started off week 0 by registering for all the tools that will be required for this bootcamp adn they include;
+i started off week 0 by registering for all the tools that will be required for this bootcamp and they include;
 - gitpod
 - github
 - lucid chart
