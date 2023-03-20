@@ -37,7 +37,7 @@ class UserActivities:
     }
     subsegment.put_metadata('key', dict, 'namespace')
     xray_recorder.end_subsegment()
-  finally:
+   finally:
     # close the segment
     xray_recorder.end_subsegment()
-  return model
+   return model
