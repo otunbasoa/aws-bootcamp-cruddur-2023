@@ -72,6 +72,28 @@ RequestsInstrumentor().instrument()
 
 <img width="1388" alt="Screenshot 2023-03-05 at 4 22 58 AM" src="https://user-images.githubusercontent.com/88699664/227735055-266b4732-e5fe-4511-87d8-c6491e64d18d.png">
 
+  ### AWS X-RAY
+   Instrument AWS X-Ray into Backend (Python-Flask) App
+    - Add the line below to requirements.txt file and install it using pip install -r requirements.txt.
     
+      ```
+      aws-xray-sdk
+      ```
+      
+   - To instrument your Flask application, start by adding the middleware to your application using the XRayMiddleware function in code. Then, configure a segment name        on the xray_recorder.
+
+      ```
+      ____
+      from aws_xray_sdk.core import xray_recorder
+      from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
+      app = Flask(__name__)
+
+      ___
+      xray_url = os.getenv("AWS_XRAY_URL")
+      xray_recorder.configure(service='cruddur-backend-flask', dynamic_naming=xray_url)
+      XRayMiddleware(app, xray_recorder)
+      ```
+
     
 
