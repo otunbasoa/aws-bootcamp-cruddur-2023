@@ -44,3 +44,32 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
 
+  - For Docker Compose, configure the Honeycomb API environment variables
+
+      ```
+      OTEL_SERVICE_NAME: 'backend-flask'
+      OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
+      OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
+      ```
+   - To obtain a Tracer for creating spans, include the following lines of code in the services/home_activities.py file
+
+      ```
+      from opentelemetry import trace
+      tracer = trace.get_tracer("tracer.name.here")
+      ```
+      
+   - custom attribute created inside that span
+      
+      ```
+      with tracer.start_as_current_span("home-activites-mock-data"):
+      span = trace.get_current_span() # this will get the span
+      now = datetime.now(timezone.utc).astimezone()
+      span.set_attribute("app.now", now.isoformat()) # this app.now attribute will show inside this span "home-activites-mock-data" , its data is the time now in ISO           foramt.
+      ```
+   
+   - see honeycomb tracing result below;
+
+      
+    
+    
+
