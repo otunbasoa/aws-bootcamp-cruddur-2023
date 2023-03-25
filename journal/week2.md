@@ -95,5 +95,21 @@ RequestsInstrumentor().instrument()
       XRayMiddleware(app, xray_recorder)
       ```
 
-    
-
+   - Create an xray.json file in the backend-flask directory and add the following lines:
+```
+    {
+  "SamplingRule": {
+      "RuleName": "Cruddur",
+      "ResourceARN": "*",
+      "Priority": 9000,
+      "FixedRate": 0.1,
+      "ReservoirSize": 5,
+      "ServiceName": "Cruddur",
+      "ServiceType": "*",
+      "Host": "*",
+      "HTTPMethod": "*",
+      "URLPath": "*",
+      "Version": 1
+  }
+}
+```
