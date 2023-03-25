@@ -140,3 +140,11 @@ RequestsInstrumentor().instrument()
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
       ```
+   - see X-Ray traces within the AWS Console below;
+      <img width="1299" alt="Screenshot 2023-03-05 at 6 47 45 AM" src="https://user-images.githubusercontent.com/88699664/227736092-14a146b9-0f73-4cf6-9e26-966b11eb3436.png">
+      
+   ### AWS CloudWatch Logs
+   
+   
+
+      
