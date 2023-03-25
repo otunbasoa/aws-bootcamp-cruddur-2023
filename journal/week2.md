@@ -68,8 +68,10 @@ RequestsInstrumentor().instrument()
       ```
    
    - see honeycomb tracing result below;
+<img width="1440" alt="Screenshot 2023-03-04 at 6 42 07 PM" src="https://user-images.githubusercontent.com/88699664/227735047-95cf13e7-ed02-40ad-9a66-0171dfd9f467.png">
 
-      
+      <img width="1388" alt="Screenshot 2023-03-05 at 4 22 58 AM" src="https://user-images.githubusercontent.com/88699664/227735055-266b4732-e5fe-4511-87d8-c6491e64d18d.png">
+
     
     
 
