@@ -74,7 +74,7 @@ RequestsInstrumentor().instrument()
 
   ### AWS X-RAY
    Instrument AWS X-Ray into Backend (Python-Flask) App
-    - Add the line below to requirements.txt file and install it using pip install -r requirements.txt.
+    - Add the line below to `requirements.txt` file and install it using `pip install -r requirements.txt`.
     
       ```
       aws-xray-sdk
@@ -95,7 +95,7 @@ RequestsInstrumentor().instrument()
       XRayMiddleware(app, xray_recorder)
       ```
 
-   - Create an xray.json file in the backend-flask directory and add the following lines:
+   - Create an `xray.json` file in the `backend-flask` directory and add the following lines:
 ```
     {
   "SamplingRule": {
@@ -113,3 +113,30 @@ RequestsInstrumentor().instrument()
   }
 }
 ```
+
+   - To generate a sampling rule, execute this command in the project directory:
+
+       ```
+       aws xray create-sampling-rule --cli-input-json file://aws/json/xray-sampling-rule.json
+       ```
+   ### Use docker-compose to configure and provision the X-Ray daemon and send data to the X-Ray API.
+   
+       ```
+         xray-daemon:
+    image: "amazon/aws-xray-daemon"
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "aws-region"
+    command:
+      - "xray -o -b xray-daemon:2000"
+    ports:
+      - 2000:2000/udp
+      ```
+      
+   - Add these two environment variable to the backend (python-flask) in docker-compose file
+
+      ```
+      AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
+      AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
+      ```
