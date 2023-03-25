@@ -145,6 +145,11 @@ RequestsInstrumentor().instrument()
       
    ### AWS CloudWatch Logs
    
-   
+   - added the following code to requirements.txt
+
+     ```
+     watchtower
+     ```
+     
 
       
