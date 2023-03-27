@@ -76,9 +76,10 @@ RequestsInstrumentor().instrument()
    Instrument AWS X-Ray into Backend (Python-Flask) App
     - Add the line below to `requirements.txt` file and install it using `pip install -r requirements.txt`.
     
-      ```
-      aws-xray-sdk
-      ```
+    
+    aws-xray-sdk
+    
+   
       
    - To instrument your Flask application, start by adding the middleware to your application using the XRayMiddleware function in code. Then, configure a segment name        on the xray_recorder.
 
@@ -121,7 +122,7 @@ RequestsInstrumentor().instrument()
        ```
    ### Use docker-compose to configure and provision the X-Ray daemon and send data to the X-Ray API.
    
-       ```
+       
          xray-daemon:
     image: "amazon/aws-xray-daemon"
     environment:
@@ -132,7 +133,7 @@ RequestsInstrumentor().instrument()
       - "xray -o -b xray-daemon:2000"
     ports:
       - 2000:2000/udp
-      ```
+      
       
    - Add these two environment variable to the backend (python-flask) in docker-compose file
 
