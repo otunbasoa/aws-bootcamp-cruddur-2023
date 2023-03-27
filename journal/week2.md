@@ -202,6 +202,69 @@ RequestsInstrumentor().instrument()
       see logs below;
       
       <img width="1297" alt="Screenshot 2023-03-22 at 3 19 15 PM" src="https://user-images.githubusercontent.com/88699664/227834650-77753737-cf00-44e5-868a-b46937c26443.png">
+      
+      ### Rollbar
+      
+       - Create a new project in Rollbar called crudder
+
+       - Add the following code to `requirements.txt` 
+
+         ```
+         blinker
+         rollbar
+         ```
+         
+       - `cd` into backend and run `pip install -r requirements.txt` to install the above 
+       - loginto rollbar to generate a token and set the access token with an env var
+
+       ```
+       export ROLLBAR_ACCESS_TOKEN=""
+       gp env ROLLBAR_ACCESS_TOKEN=""
+       ```
+       
+       - use the following code to import for rollbar
+
+       ```
+       import rollbar
+       import rollbar.contrib.flask
+       from flask import got_request_exception
+       ```
+       
+       
+       - initialize env var with the following code
+
+```
+       rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
+@app.before_first_request
+def init_rollbar():
+    """init rollbar module"""
+    rollbar.init(
+        # access token
+        rollbar_access_token,
+        # environment name
+        'production',
+        # server root directory, makes tracebacks prettier
+        root=os.path.dirname(os.path.realpath(__file__)),
+        # flask already sets up logging
+        allow_logging_basic_config=False)
+
+    # send exceptions from `app` to rollbar, using flask's signal system.
+    got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+```
+
+   - add the following endpoint to test rollbar to `app.py`
+
+```
+@app.route('/rollbar/test')
+def rollbar_test():
+    rollbar.report_message('Hello World!', 'warning')
+    return "Hello World!"
+```
+
+see rollbar sceenshot below;
+
+
+<img width="749" alt="Screenshot 2023-03-25 at 6 09 11 PM" src="https://user-images.githubusercontent.com/88699664/227836551-3aa3a66e-2bcf-471f-88bf-afd7f84ceace.png">
 
 
       
