@@ -199,6 +199,9 @@ RequestsInstrumentor().instrument()
       AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
       ```
+      see logs below;
       
-      
+      <img width="1297" alt="Screenshot 2023-03-22 at 3 19 15 PM" src="https://user-images.githubusercontent.com/88699664/227834650-77753737-cf00-44e5-868a-b46937c26443.png">
+
+
       
